@@ -5,7 +5,7 @@ const API_URLS = {
 };
 
 const SHINDO_COLORS = {
-  "震度1": "#888888",
+  "震度1": "#f7f6f2",
   "震度2": "#4169e1",
   "震度3": "#228b22",
   "震度4": "#ffd700",
@@ -130,5 +130,6 @@ function parseXML(xmlText) {
 
 // 初期ロードで情報取得
 window.onload = updateInfo;
+
 
 
