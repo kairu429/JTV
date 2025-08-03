@@ -119,7 +119,7 @@ function parseXML(xmlText) {
     const summary = entry.getElementsByTagName("summary")[0]?.textContent || "内容不明";
 
     const html = `
-      <div class="card" style="background-color: #888; border-color: orange;">
+      <div class="card" style="background-color: #003366; border-color: orange;">
         <b>${title}</b><br>
         <b>更新日時:</b> ${formatTime(updated)}<br>
         ${summary}
@@ -130,4 +130,5 @@ function parseXML(xmlText) {
 
 // 初期ロードで情報取得
 window.onload = updateInfo;
+
 
