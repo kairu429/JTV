@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <title>災害情報ビューア</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>災害情報ビューア</h1>
-  </header>
-  <main>
-    <select id="apiSelect">
+<main>
+  <div class="control-panel">
+    <select id="apiSelect" class="select-box">
       <option value="quake">地震情報</option>
       <option value="tsunami">津波情報</option>
-      <option value="warning">警報・注意報</option>
     </select>
-    <button onclick="updateInfo()">更新</button>
-    <section id="content">
-      <p>情報を取得しています...</p>
-    </section>
-  </main>
-  <footer>© 2025 災害情報システム</footer>
-  <script src="app.js"></script>
-</body>
-</html>
+    <button onclick="updateInfo()" class="update-btn">更新</button>
+  </div>
+  <section id="content">
+    <p>情報を取得しています...</p>
+  </section>
+</main>
