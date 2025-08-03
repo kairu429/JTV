@@ -37,7 +37,7 @@ function formatTime(str) {
 
 async function updateInfo() {
   const content = document.getElementById("content");
-  content.innerHTML = "";
+  content.innerHTML = "<p>読み込み中...</p>";
   const selected = document.getElementById("apiSelect").value;
   const url = API_URLS[selected];
 
@@ -63,6 +63,7 @@ async function updateInfo() {
 
 function displayQuake(data) {
   const content = document.getElementById("content");
+  content.innerHTML = "";
   data.forEach(item => {
     const eq = item.earthquake || item;
     if (!eq) return;
@@ -72,7 +73,7 @@ function displayQuake(data) {
     const places = (item.points || []).slice(0, 3).map(p => p.addr || "不明").join(", ");
 
     const html = `
-      <div class="card" style="border-left: 8px solid ${color}">
+      <div class="card" style="border-left-color: ${color};">
         <b>発生時刻:</b> ${formatTime(eq.time)}<br>
         <b>震源地:</b> ${eq.hypocenter?.name || "不明"}<br>
         <b>マグニチュード:</b> M${eq.hypocenter?.magnitude || "不明"}<br>
@@ -86,6 +87,7 @@ function displayQuake(data) {
 
 function displayTsunami(data) {
   const content = document.getElementById("content");
+  content.innerHTML = "";
   data.forEach(item => {
     const time = item.time || "不明";
     const areas = item.areas?.map(a => a.name).join(", ") || "不明";
@@ -101,6 +103,7 @@ function displayTsunami(data) {
 
 function parseXML(xmlText) {
   const content = document.getElementById("content");
+  content.innerHTML = "";
   const parser = new DOMParser();
   const xml = parser.parseFromString(xmlText, "text/xml");
   const entries = xml.getElementsByTagName("entry");
@@ -124,3 +127,6 @@ function parseXML(xmlText) {
     content.insertAdjacentHTML("beforeend", html);
   }
 }
+
+// 初期ロードで情報取得
+window.onload = updateInfo;
